@@ -28,8 +28,8 @@ Blockly.JavaScript['sheet_write_easy'] = function (block) {
     for (let n = 0; n < block.itemCount_; n++) {
       let val = Blockly.JavaScript.valueToCode(block, 'data_' + n) || '""';
       let newVal;
-      if (val.indexOf(',') != -1) {
-        newVal = "'" + val.replace(/,/g, '').replace(/\'/g, '').replace(/ /g, '') + "'";
+      if (val.indexOf(',') != -1 && val.indexOf('(') == -1 && val.indexOf(')') == -1) {
+        newVal = "'" + val.replace(/\'/g, '').replace(/ /g, '') + "'";
       } else {
         newVal = val;
       }
@@ -46,8 +46,8 @@ Blockly.JavaScript['sheet_write_easy'] = function (block) {
   } else {
     let val = Blockly.JavaScript.valueToCode(block, 'data_' + 0) || '""';
     let newVal;
-    if (val.indexOf(',') != -1) {
-      newVal = "'" + val.replace(/,/g, '').replace(/\'/g, '').replace(/ /g, '') + "'";
+    if (val.indexOf(',') != -1 && val.indexOf('(') == -1 && val.indexOf(')') == -1) {
+      newVal = "'" + val.replace(/\'/g, '').replace(/ /g, '') + "'";
     } else {
       newVal = val;
     }
